@@ -4,8 +4,17 @@ export default function TaskForm() {
     const [task, setTask] = useState('');
     const [priority, setPriority] = useState('Medium');
     const [category, setCategory] = useState('General');
+    const handlesubmit =(e)=>{
+        e.preventDefault();
+        addTask({text: task, priority, category,completed: false}); //send data to addTask()
+        
+        //Reset state
+        setPriority("Medium");
+        setCategory('General');
+        setTask("");
+    }
   return (
-   <form className='task-form'>
+   <form onSubmit={handlesubmit}  className='task-form'>
     <div id="inp">
     <input type='text'
     placeholder='Enter Your Task' 
